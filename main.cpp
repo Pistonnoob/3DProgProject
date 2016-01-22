@@ -27,7 +27,26 @@ int main(int argc, char* args[])
 	if (!Initiate())
 		return -1;
 
-
+	bool loop = true;
+	while (loop)
+	{
+		SDL_Event wEvent;
+		while (SDL_PollEvent(&wEvent))
+		{
+			if (wEvent.type == SDL_QUIT)
+			{
+				loop = false;
+			}
+			else if (wEvent.type == SDL_KEYDOWN)
+			{
+				switch (wEvent.key.keysym.sym)
+				{
+				default:
+					break;
+				}
+			}
+		}
+	}
 
 	return 0;
 }
@@ -38,7 +57,7 @@ int Initiate()
 	if (InitSDL() == -1)
 		return -1;
 
-	windowColor = { 255, 255, 255, 255 };
+	windowColor = { 10, 100, 0, 255 };
 
 	if (CreateWindow() == -1)
 		return -1;
@@ -68,6 +87,7 @@ int CreateWindow()
 		std::cout << "Failed to create window : " << SDL_GetError() << std::endl;
 		return -1;
 	}
+	return 1;
 }
 int CreateRenderer()
 {
