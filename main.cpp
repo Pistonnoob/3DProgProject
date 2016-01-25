@@ -45,9 +45,6 @@ int main(int argc, char* args[])
 					break;
 				}
 			}
-
-			Update();
-			Render();
 		}
 	}
 
